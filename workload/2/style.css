@@ -12,6 +12,7 @@ body {
 h1 {
     color: #FFF;
     font-size: 2em;
+    font-family: Georgia;
     padding-top: 100px;
     width: 100%;
 }
@@ -21,6 +22,7 @@ h2 {
     color: rgba(255, 255, 255, 0.5);
     font-weight: 100;
     font-size: 22px;
+    font-family: Georgia;
     line-height: 24px;
     padding-bottom: 30px;
     text-align: left;
@@ -28,6 +30,7 @@ h2 {
 }
 
 p {
+    font-family: Helvetica;
     color: AliceBlue;
     line-height: 1.3em;
     text-align: left;
