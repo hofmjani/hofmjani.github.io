@@ -18,6 +18,10 @@ h2.destination {
     text-transform: uppercase;
 }
 
+.publish-time {
+    color: gray;
+}
+
 .cursive {
     font-family: cursive;
 }
@@ -26,6 +30,6 @@ h2.destination {
     text-transform: capitalize;
 }
 
-.publish-time {
-    color: gray;
+.description h5 {
+    color: teal;
 }
