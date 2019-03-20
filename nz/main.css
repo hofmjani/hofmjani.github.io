@@ -13,9 +13,15 @@ header {
 
 header h2 {
     font-size: 4em;
+<<<<<<< HEAD
     color: white;
     margin: 0;
     padding: 1em 0;
+=======
+    color: hsl(0, 0%, 100%);
+    margin: 0;
+    padding:1em 0;
+>>>>>>> 6bdfeb4e953db56c2d4d8f4de2e17b97c8d7bc34
 }
 
 header h3 {
@@ -25,12 +31,17 @@ header h3 {
 
 header h4 {
     font-size: 0.75em;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 6bdfeb4e953db56c2d4d8f4de2e17b97c8d7bc34
 }
 
 .author {
     text-align: center;
 }
+<<<<<<< HEAD
 
 .author img {
     border: 4px solid white;
@@ -71,3 +82,11 @@ main figure img {
 
 .back{float:left;}
 .next{float:right;}
+=======
+.author img{
+    border:4px solid white;
+    border-radius: 50%;
+    margin-top: -10px;
+
+}
+>>>>>>> 6bdfeb4e953db56c2d4d8f4de2e17b97c8d7bc34
