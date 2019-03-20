@@ -31,6 +31,6 @@ let pin= L.marker(
 
 
 //Popup zum Pin hängen
-pin.bindPopup(titel);
+pin.bindPopup(titel).openPopup();
 
 
