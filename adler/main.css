@@ -13,14 +13,14 @@ header {
 header h2 {
     font-size: 4em;
     /* em -> Verhältnis wie Normalgröße! gut für bearbeitung */
-    color: black;
+    color: white;
     margin: 0;
     padding: 1em 0;
 }
 
 header h3{
     font-size: 2em;
-    color: black;
+    color: white;
     margin:0;
 }
 
