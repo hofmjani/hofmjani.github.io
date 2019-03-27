@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Adlerweg: Badener Hütte - Matreier Tauernhaus</title><!-- TODO:Titel der Etappe -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script defer src="main.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <h3>Adlerweg</h3>
+        <h4>Weitwandern auf den Schwingen des Adlers</h4>
+        <!-- TODO: eine Überschrift 2 mit dem Titel der Etappe -->
+        <h2>Badener Hütte - Matreier Tauernhaus</h2>
+
+    </header>
+    <div class="author">
+        <img src="images/author1.png" alt="Userbild">
+        <address>
+            <a href="mailto:csav6794@student.uibk.ac.at">Mail an den Autor</a> <br>
+            <a href="https://github.com/hofmjani/hofmjani.github.io">Github von hofmjani</a>
+        </address>
+    </div>
+    <!-- TODO: ein div-Element mit der Klasse "author" -->
+    <!-- TODO: ein User-(Symbol)Bild mit 100x100 Pixel im Format JPG mit dem Namen user.jpg in einem Unterordner images/ -->
+    <!-- TODO: ein address-Element mit zwei Links -->
+    <!-- TODO: ein Link auf die eigene E-Mailadresse mit dem eigenen Namen-->
+    <!-- TODO: ein Link auf den eigenen github.com Account -->
+
+    <hr />
+
+    <main>
+        <h1>Etappe 5: Badener Hütte - Matreier Tauernhaus</h1>
+        <p>Grandioses Gletscherpanorama auch auf dieser Etappe. Der Venediger Höhenweg leitet zuerst Richtung Norden und erreicht nach einem gemütlichen, fast flachen Anstieg das Löbbentörl, wo sich ein traumhaft schöner Ausblick ins Frosnitztal und auf den Venediger öffnet. Nach dem Salzboden mit dem verträumten kleinen Salzbodensee geht es weiter über den Gletscherweg nach Osten zum Venedigerhaus von Innergschlöss. Hier gibt es gute Almschmankerln und auch eine Übernachtungsmöglichkeit, ansonsten geht es gut gestärkt weiter nach Außergschlöss. Müde, aber glücklich über die vielen schönen Natureindrücke, erreicht man das Matreier Tauernhaus.</p>
+        (Quelle:<a href="https://www.tirol.at/reisefuehrer/sport/wandern/wandertouren/a-adlerweg-etappe-o5-badener-huette-matreier-tauernhaus">tirol.at) </a>
+        <!-- TODO: eine Überschrift 1 mit dem Titel der Etappe und einem kurzen "Teaser" -->
+        <!-- TODO: ein Absatz mit einem Einführungstext zur Etappe aus der Wikipedia plus einem Link auf die Wikipedia-Seite in der Form "(Quelle: Wikipedia)", das Wort "Wikipedia" als Link -->
+        
+        <h2>Badener Hütte</h2>
+        <figure><img src="Images/attraction.jpg" alt="Dreimaster Edwin Fox">
+            <figcaption><i class="fas fa-camera-retro"></i><em> Der Dreimaster Edwin Fox vor Picton</em></figcaption>
+        </figure>
+
+        <!-- TODO: eine Überschrift 2 einer Sehenswürdigkeit der Etappe-->
+        <!-- TODO: eine vollständige Abbildung mit Bild im JPG-Format und kursiver Bildüberschrift für diese Sehenswürdigkeit. Das Bild soll attraction.jpg heißen, maximal 900 Pixel breit oder hoch sein und im Ordner images/ liegen. Das Bild soll von https://commons.wikimedia.org/ oder https://pixabay.com/ stammen und eine Public Domain, oder CC BY-SA Lizenz besitzen. -->
+        <P>Picton ist Ausgangspunkt für Fahrten in die Marlborough Sounds. Sehenswürdigkeiten von Picton sind der im
+            Hafen liegende Dreimaster Edwin Fox sowie ein kleines den Walen (mit Informationen zum Walfang) gewidmetes
+            Museum. (Quelle: <a href="https://de.wikipedia.org/wiki/Picton_(Neuseeland)">Wikipedia) </a></P>
+        <!-- TODO: ein Absatz mit der Beschreibung der Sehenswürdigkeit aus der Wikipedia plus einem Link auf die Wikipedia-Seite in der Form "(Quelle: Wikipedia)", das Wort "Wikipedia" als Link -->
+
+        <h2>Matreier Tauernhaus</h2>
+        <figure><img src="Images/attraction.jpg" alt="Dreimaster Edwin Fox">
+            <figcaption><i class="fas fa-camera-retro"></i><em> Der Dreimaster Edwin Fox vor Picton</em></figcaption>
+        </figure>
+
+        <!-- TODO: eine Überschrift 2 einer Sehenswürdigkeit der Etappe-->
+        <!-- TODO: eine vollständige Abbildung mit Bild im JPG-Format und kursiver Bildüberschrift für diese Sehenswürdigkeit. Das Bild soll attraction.jpg heißen, maximal 900 Pixel breit oder hoch sein und im Ordner images/ liegen. Das Bild soll von https://commons.wikimedia.org/ oder https://pixabay.com/ stammen und eine Public Domain, oder CC BY-SA Lizenz besitzen. -->
+        <P>Picton ist Ausgangspunkt für Fahrten in die Marlborough Sounds. Sehenswürdigkeiten von Picton sind der im
+            Hafen liegende Dreimaster Edwin Fox sowie ein kleines den Walen (mit Informationen zum Walfang) gewidmetes
+            Museum. (Quelle: <a href="https://de.wikipedia.org/wiki/Picton_(Neuseeland)">Wikipedia) </a></P>
+        <!-- TODO: ein Absatz mit der Beschreibung der Sehenswürdigkeit aus der Wikipedia plus einem Link auf die Wikipedia-Seite in der Form "(Quelle: Wikipedia)", das Wort "Wikipedia" als Link -->
+        <h3>Übersichtskarte</h3>
+        <div id="map" data-lat="-41.293056" data-lng="174.001944" data-title="Edwin Fox">
+        </div>
+        <!-- TODO: ein div-Element mit dem id-Attribut "map" und drei weiteren Attributen data-lat, data-lng und data-title. Die Koordinaten von data-lat und data-lng sind als Dezimalgrad mit einem "." als Komma zu schreiben und aus der Wikipedia zu entnehmen. Das data-title Attribut enthält einen Titel für die oben verwendete Sehenswürdigkeit
+        -->
+
+        <h3>Links</h3>
+        <ul>
+            <li><a href="https://www.newzealand.com/de/picton/"> 100% Pure New Zealand </a></li>
+            <li><a href="http://www.visitpicton.co.nz/"> Visit Picton </a> </li>
+            <li><a href="https://www.greatjourneysofnz.co.nz/interislander/experience/destinations/picton/">Interislander
+                    - A Great Journey of New Zealand </a></li>
+            <li> <a href="https://www.pictontop10.co.nz/">Picton Top 10 Holiday Parks </a></li>
+
+        </ul>
+
+        <!-- TODO: 4 Links zu Seiten im Netz die zur Etappe/Sehenswürdigkeit passen als ungeordnete Liste -->
+
+    </main>
+
+    <hr />
+
+    <footer>
+        <nav class="back"> <a href="https://leoniewae.github.io/nz/index.html"> <i class="fas fa-arrow-circle-left"></i>
+                Abel Tasman </a></nav>
+        <!--Wenn Leonie ihre Seite ändert: nz klein schreiben! -->
+        <nav class="next"> <a href="https://isabellebeutelspacher.github.io/nz/index.html"> Wellington<i
+                    class="fas fa-arrow-circle-right"></i></a></nav>
+
+        <!-- TODO: ein nav-Element mit zwei Links auf die vorherige Etappe und die nächste Etappe mit den Klassen "back" und "next" sowie den Link-Texten "vorhergehender Stop" und "nächster Stop". Die Links verweisen auf die entsprechenden Etappen in der Form https://username.github.io/nz/index.html -->
+    </footer>
+
+</body>
+
+</html>
