@@ -1,0 +1,95 @@
+[
+{
+	"[kunde": "Wilder Kaiser", 
+	"standort": "Gruttenhütte", 
+	"seehoehe": 1640, 
+	"lat": "475556388888889,00000", 
+	"lng": "123186111111111,00000"}, 
+{
+	"[kunde": "Bergbahn Scheffau", 
+	"standort": "Brandstadl", 
+	"seehoehe": 1640, 
+	"lat": "474912,00000", 
+	"lng": "12248,00000"}, 
+{
+	"[kunde": "Lechtal Tourismus", 
+	"standort": "Sonnalm Jöchelspitze", 
+	"seehoehe": 1786, 
+	"lat": "472752833333333,00000", 
+	"lng": "1036505,00000"}, 
+{
+	"[kunde": "TVB Region Hall-Wattens", 
+	"standort": "Kugelwald am Glungezer", 
+	"seehoehe": 1541, 
+	"lat": "474078472222222,00000", 
+	"lng": "119122194444444,00000"}, 
+{
+	"[kunde": "TVB St. Anton am Arlberg", 
+	"standort": "Kapall", 
+	"seehoehe": 2330, 
+	"lat": "4714805,00000", 
+	"lng": "102491666666667,00000"}, 
+{
+	"[kunde": "Tourismusverband Achensee", 
+	"standort": "Am Rofan. neben dem Almstüberl. gegenüber der Rofanseilbahn Bergstation", 
+	"seehoehe": 1831, 
+	"lat": "474415388888889,00000", 
+	"lng": "117636388888889,00000"}, 
+{
+	"[kunde": "Tourismusverband Achensee", 
+	"standort": "Am Zwölferkopf. direkt beim Alpengasthaus Karwendel am Balkon", 
+	"seehoehe": 1491, 
+	"lat": "474278277777778,00000", 
+	"lng": "11694925,00000"}, 
+{
+	"[kunde": "Ferienregion Hohe Salve  ", 
+	"standort": "Buchacker Alm Adlerhorst", 
+	"seehoehe": 1460, 
+	"lat": "475378944444444,00000", 
+	"lng": "120231722222222,00000"}, 
+{
+	"[kunde": "Alpbachtal", 
+	"standort": "Berghaus Sonnwendjoch", 
+	"seehoehe": 1780, 
+	"lat": "474640833333333,00000", 
+	"lng": "118286305555556,00000"}, 
+{
+	"[kunde": "TVB Imst", 
+	"standort": "Muttekopf", 
+	"seehoehe": 2050, 
+	"lat": "472556611111111,00000", 
+	"lng": "10676875,00000"}, 
+{
+	"[kunde": "TVB Kufstein", 
+	"standort": "Brentenjoch", 
+	"seehoehe": 1226, 
+	"lat": "475784163888889,00000", 
+	"lng": "1221217,00000"}, 
+{
+	"[kunde": "Nordkette Innsbruck", 
+	"standort": "Seegrube", 
+	"seehoehe": 1905, 
+	"lat": "473062277777778,00000", 
+	"lng": "113794083333333,00000"}, 
+{
+	"[kunde": "Nordkette Innsbruck", 
+	"standort": "Hafelekar", 
+	"seehoehe": 2269, 
+	"lat": "4731185,00000", 
+	"lng": "113837611111111,00000"}, 
+{
+	"[kunde": "TVB Wilder Kaiser", 
+	"standort": "Going Astberg Speicherteich 2", 
+	"seehoehe": 1250, 
+	"lat": "475008333333333,00000", 
+	"lng": "123241666666667,00000"}, 
+{
+	"[kunde": "TVB Wilder Kaiser", 
+	"standort": "Going Astberg Speicherteich 2", 
+	"seehoehe": 1250, 
+	"lat": "475016666666667,00000", 
+	"lng": "123230555555556,00000"}, 
+{}, 
+{
+	"[kunde": "]"}
+]

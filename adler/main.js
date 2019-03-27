@@ -46,38 +46,14 @@ pin2.bindPopup(titel2).openPopup();
 
 //Schleife vereinfacht das vorgehen! man muss nicht mehr so viel Copy paste machen
 
-const adlerblicke = [
 
-    {
-        kunde: "Wilder Kaiser",
-        standort: "Gruttenhütte",
-        seehoehe: 1640,
-        lat: 47.55564,
-        lng: 12.31861,
-    },
+let markerGruppe=L.featureGroup().addTo(karte);
 
-    {
-        kunde: "Bergbahn Scheffau",
-        standort: "Brandstadl",
-        seehoehe: 1640,
-        lat: 47.49111,
-        lng: 12.248,
-    },
-
-    {
-        kunde: "Lechtal Tourismus",
-        standort: "Sonnalm Jöchelspitze",
-        seehoehe: 1786,
-        lat: 47.27528,
-        lng: 10.36505,
-    }
-
-];
 
 for (let blick of adlerblicke) {
     let blickpin = L.marker(
         [blick.lat, blick.lng]
-    ).addTo(karte);
+    ).addTo(markerGruppe);
     blickpin.bindPopup(
         `<h1> Standort${blick.standort}</h1>
         <p>Höhe ${blick.seehoehe}m</p>
@@ -86,4 +62,7 @@ for (let blick of adlerblicke) {
     )
 }
 
-//für jedes der variable blick des elements adlerblicks abarbeiten! 
+karte.fitBounds(markerGruppe.getBounds())
+
+
+//für jedes der variable blick des elements adlerblicks abarbeiten! Vorschleife ist wichtig, dass der marker erstellt wird und dann das popop geöffnet werden 
