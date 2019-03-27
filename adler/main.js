@@ -8,6 +8,8 @@ const titel1 = div.getAttribute("data-title1");
 const breite2 = div.getAttribute("data-lat2");
 const laenge2 = div.getAttribute("data-lng2");
 const titel2 = div.getAttribute("data-title2");
+const ausmaßlaenge =div.getAttribute("extent-lng");
+const ausmaßbreite =div.getAttribute("extent-lat")
 
 
 //console.log("Breite=",breite,"Länge=",länge,"Titel=",titel);
@@ -20,8 +22,8 @@ let karte = L.map("map");
 
 //auf ausschnitt zoomen: 
 karte.setView(
-    [breite1, laenge1], 11.5
-);
+    [ausmaßbreite, ausmaßlaenge], 12
+)
 
 //open street map einbinden
 
