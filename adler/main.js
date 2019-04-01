@@ -47,7 +47,7 @@ pin2.bindPopup(titel2).openPopup();
 //Schleife vereinfacht das vorgehen! man muss nicht mehr so viel Copy paste machen
 
 
-let markerGruppe=L.featureGroup().addTo(karte);
+let markerGruppe = L.featureGroup().addTo(karte);
 
 
 for (let blick of adlerblicke) {
@@ -55,9 +55,9 @@ for (let blick of adlerblicke) {
         [blick.lat, blick.lng]
     ).addTo(markerGruppe);
     blickpin.bindPopup(
-        `<h1> Standort${blick.standort}</h1>
+        `<h1>Standort ${blick.standort}</h1>
         <p>Höhe ${blick.seehoehe}m</p>
-        <em> Kunde: ${blick.kunde}</em>
+        <em>Kunde: ${blick.kunde}</em>
         `
     )
 }

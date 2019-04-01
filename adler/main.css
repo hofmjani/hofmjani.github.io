@@ -13,15 +13,15 @@ header {
 header h2 {
     font-size: 4em;
     /* em -> Verhältnis wie Normalgröße! gut für bearbeitung */
-    color: black ;
+    color: black;
     margin: 0;
     padding: 1em 0;
 }
 
-header h3{
+header h3 {
     font-size: 2em;
     color: white;
-    margin:0;
+    margin: 0;
 }
 
 header h4 {
@@ -29,14 +29,15 @@ header h4 {
     color: white;
 }
 
-.author{
+.author {
     text-align: center;
 }
 
-.author img{
-border: 4px solid white;
-border-radius: 50%;
-margin-top:-50px;}
+.author img {
+    border: 4px solid white;
+    border-radius: 50%;
+    margin-top: -50px;
+}
 
 
 address a {
@@ -80,16 +81,15 @@ main figure img {
     float: right;
 }
 
-footer{
-    padding: 1em 0 3em 0; 
+footer {
+    padding: 1em 0 3em 0;
 }
 
 
-@media only screen and (max-width:900px)
-{
-    main figure figcaption{
-    float:none; 
-    margin-left: 0;
-    width: auto;
+@media only screen and (max-width:900px) {
+    main figure figcaption {
+        float: none;
+        margin-left: 0;
+        width: auto;
     }
 }
