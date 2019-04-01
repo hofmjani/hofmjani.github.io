@@ -55,8 +55,8 @@ for (let blick of adlerblicke) {
         [blick.lat, blick.lng]
     ).addTo(markerGruppe);
     blickpin.bindPopup(
-        `<h1>Standort ${blick.standort}</h1>
-        <p>Höhe ${blick.seehoehe}m</p>
+        `<h1>Standort: ${blick.standort}</h1>
+        <p>Höhe: ${blick.seehoehe}m</p>
         <em>Kunde: ${blick.kunde}</em>
         `
     )
