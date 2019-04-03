@@ -139,7 +139,7 @@ for (let blick of adlerblicke) {
     )
 }
 
-karte.fitBounds(markerGruppe.getBounds())
-
-
+karte.fitBounds(markerGruppe.getBounds());
+karte.addControl(new L.Control.Fullscreen());
+var hash = new L.Hash(karte);
 //für jedes der variable blick des elements adlerblicks abarbeiten! Vorschleife ist wichtig, dass der marker erstellt wird und dann das popop geöffnet werden 
