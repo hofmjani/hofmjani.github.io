@@ -138,8 +138,16 @@ for (let blick of adlerblicke) {
         `
     )
 }
+//für jedes der variable blick des elements adlerblicks abarbeiten! Vorschleife ist wichtig, dass der marker erstellt wird und dann das popop geöffnet werden 
+
+//karten elemente einbauen: 
 
 karte.fitBounds(markerGruppe.getBounds());
 karte.addControl(new L.Control.Fullscreen());
 var hash = new L.Hash(karte);
-//für jedes der variable blick des elements adlerblicks abarbeiten! Vorschleife ist wichtig, dass der marker erstellt wird und dann das popop geöffnet werden 
+var coords = new L.Control.Coordinates();
+coords.addTo(karte);
+karte.on('click', function(e) {
+	coords.setCoordinates(e);
+});
+

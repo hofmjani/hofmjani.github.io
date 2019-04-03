@@ -15,7 +15,7 @@ L.Control.Coordinates = L.Control.extend({
 		position: 'bottomleft',
 		latitudeText: 'lat.',
 		longitudeText: 'lon.',
-		promptText: 'Press Ctrl+C to copy coordinates',
+		promptText: 'Druecke Ctrl+C zum Kopieren der Koordinaten',
 		precision: 4
 	},
 
