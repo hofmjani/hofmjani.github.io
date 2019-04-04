@@ -42,6 +42,15 @@ const kartenLayer = {
         subdomains: ["a", "b", "c"],
         attribution: 'Map tiles by <a href="http://stamen.com">Stamen Desxign</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.'
     }),
+    NZ_Topo50: L.tileLayer("http://tiles-a.data-cdn.linz.govt.nz/services;key=88a3903ff4484424a745f012086cb9d8/tiles/v4/layer=50767/EPSG:3857/{z}/{x}/{y}.png", {
+        subdomains: ["a", "b", "c"],
+        attribution: 'Copyright 2011 Crown copyright (c) Land Information New Zealand and the New Zealand Government. All rights reserved'
+    }),
+    NZ_Aerial_Imagery: L.tileLayer("http://tiles-a.data-cdn.linz.govt.nz/services;key=88a3903ff4484424a745f012086cb9d8/tiles/v4/set=4702/EPSG:3857/{z}/{x}/{y}.png", {
+        subdomains: ["a", "b", "c"],
+        attribution: 'Copyright 2011 Crown copyright (c) Land Information New Zealand and the New Zealand Government. All rights reserved'
+    }),
+
 };
 
 kartenLayer.osm.addTo(karte);
@@ -50,7 +59,10 @@ L.control.layers({
     "OpenStreetMap": kartenLayer.osm,
     "Stamen Toner": kartenLayer.stamen_toner,
     "Stamen Terrain": kartenLayer.stamen_terrain,
-    "Stamen Watercolor": kartenLayer.stamen_watercolor
+    "Stamen Watercolor": kartenLayer.stamen_watercolor,
+    "NZ Topo50 Maps": kartenLayer.NZ_Topo50,
+    "NZ Aerial Imagery": kartenLayer.NZ_Aerial_Imagery,
+
 }).addTo(karte);
 
 //Positionsmarker hinzufügen
@@ -64,7 +76,7 @@ pin.bindPopup(titel).openPopup();
 
 
 //Kartenelementeeinfügen
-karte.fitBounds(markerGruppe.getBounds());
+
 karte.addControl(new L.Control.Fullscreen());
 var hash = new L.Hash(karte);
 var coords = new L.Control.Coordinates();
