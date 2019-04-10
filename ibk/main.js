@@ -110,7 +110,8 @@ for(let staette of SPORTSTAETTEN) {
     //console.log(staette);
     //pictogram definieren: 
     let piktogramm = L.icon({
-       iconUrl= `icons/icons/icon_${staette.icon}_schwarz_auf_weiss_250px.png`
+       iconUrl: `icons/icon_${staette.icon}_schwarz_auf_weiss_250px.png`,
+       iconSize: [15, 15],
     });
 
 //marker zeichnen
@@ -132,15 +133,3 @@ for(let staette of SPORTSTAETTEN) {
 };
 
 
-
-//for (let blick of adlerblicke) {
-   // let blickpin = L.marker(
-     //   [blick.lat, blick.lng]
-    //).addTo(markerGruppe);
-    //blickpin.bindPopup(
-      //  `<h1>Standort: ${blick.standort}</h1>
-       // <p>Höhe: ${blick.seehoehe}m</p>
-        //<em>Kunde: ${blick.kunde}</em>
-       // `
-    //)
-//}
