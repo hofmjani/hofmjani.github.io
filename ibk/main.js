@@ -1,4 +1,4 @@
-// alert("hello world!");
+
 //hier: deutsche variablen verwenden (in html englische variablen)
 
 const div = document.getElementById("map");
@@ -79,14 +79,6 @@ const kartenLayer = {
 
 //Kartenlayer hinzufügen! 
 kartenLayer.osm.addTo(karte);
-//kartenLayer.geolandbasemap.addTo(karte); 
-//kartenLayer.bmapoverlay.addTo(karte);
-//kartenLayer.bmapgrau.addTo(karte);
-//kartenLayer.bbmaphidpi.addTo(karte);
-//kartenLayer.bmaporthofoto30cm.addTo(karte);
-//kartenLayer.bmapgelaende.addTo(karte);
-//kartenLayer.bmapoberflaeche.addTo(karte);
-
 
 
 //Auswahlmenue hinzufügen
@@ -103,10 +95,6 @@ L.control.layers({
     "Stamen Terrain": kartenLayer.stamen_terrain,
     "Stamen Watercolor": kartenLayer.stamen_watercolor
 }).addTo(karte);
-
-
-
-
 
 
 //karte.set.View([
