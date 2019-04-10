@@ -108,13 +108,26 @@ console.log(SPORTSTAETTEN);
 
 for(let staette of SPORTSTAETTEN) {
     //console.log(staette);
+    //pictogram definieren: 
+    let piktogramm = L.icon({
+       iconUrl= `icons/icon_$staette.icon_schwarz_auf_weiss_250px.png`
+    });
+
+
     let positionsMarker=L.marker([
-        staette.lat,staette.lng
-    ]).addTo(karte);
+        staette.lat,staette.lng], {
+            icon: piktogramm
+        }
+        
+        ).addTo(karte);
+
+
     positionsMarker.bindPopup(
         `<h3> ${staette.name}</h3>
         <h2> ${staette.typ}</h2>)`
-    )
+    );
+
+
    
 };
 
