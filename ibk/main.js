@@ -100,23 +100,20 @@ L.control.layers({
 //karte.set.View([
     //47,11],13)
     //;
-
+let positionsMarker=L.marker([47,11]).addTo(karte)
 
 karte.locate({
     setView:true,
     maxZoom:16,
+    watch:true,
 });
 
 
 karte.on("locationfound",function(event){
     console.log(event);
-    L.marker([
-        event.latitude, event.longitude
-    ]).addTo(karte);
-    L.circle([event.latitude, event.longitude], {
-    radius: event.accuracy/2
-}).addTo(karte);
-
+   // L.marker(event.latitude, event.longitude ]).addTo(karte); -> Marker durch Postitionsmarker ersetzt 
+   positionsMarker.setLatLng(event.latlng);
+    //L.circle([event.latlng], {radius: event.accuracy/2}).addTo(karte); Kreis um den Positionsmarker
 });
 
 karte.on("locationerror", function(event){
