@@ -113,4 +113,9 @@ karte.on("locationfound",function(event){
     L.marker([
         event.latitude, event.longitude
     ]).addTo(karte);
+    L.circle([event.latitude, event.longitude], {
+    radius: event.accuracy/2
+}).addTo(karte);
+
 });
+
