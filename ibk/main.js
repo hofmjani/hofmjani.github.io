@@ -119,3 +119,6 @@ karte.on("locationfound",function(event){
 
 });
 
+karte.on("locationerror", function(event){
+    alert("Leider keinen Standort gefunden")
+});
