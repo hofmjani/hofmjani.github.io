@@ -100,4 +100,34 @@ L.control.layers({
 karte.setView([
     47.267222,11.392778],13);
 
-let positionsMarker=L.marker([47,11]).addTo(karte)
+
+
+
+console.log(SPORTSTAETTEN);
+
+
+for(let staette of SPORTSTAETTEN) {
+    //console.log(staette);
+    let positionsMarker=L.marker([
+        staette.lat,staette.lng
+    ]).addTo(karte);
+    positionsMarker.bindPopup(
+        `<h3> ${staette.name}</h3>
+        <h2> ${staette.typ}</h2>)`
+    )
+   
+};
+
+
+
+//for (let blick of adlerblicke) {
+   // let blickpin = L.marker(
+     //   [blick.lat, blick.lng]
+    //).addTo(markerGruppe);
+    //blickpin.bindPopup(
+      //  `<h1>Standort: ${blick.standort}</h1>
+       // <p>Höhe: ${blick.seehoehe}m</p>
+        //<em>Kunde: ${blick.kunde}</em>
+       // `
+    //)
+//}
