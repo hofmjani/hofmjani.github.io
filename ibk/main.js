@@ -21,9 +21,9 @@ let karte = L.map("map");
 
 
 //auf ausschnitt zoomen: 
-karte.setView(
-    [47.2, 11.2], 9
-)
+//karte.setView(
+ // [47.2, 11.2], 9
+//)
 
 //open street map einbinden
 
@@ -106,30 +106,23 @@ L.control.layers({
 
 
 
-//Positionsmarker hinzufügen
-let pin1 = L.marker(
-    [breite1, laenge1]
-).addTo(karte);
-
-let pin2 = L.marker(
-    [breite2, laenge2]
-).addTo(karte);
-
-//Popup zum Pin hängen
-pin1.bindPopup(titel1).openPopup();
-pin2.bindPopup(titel2).openPopup();
 
 
 
+//karte.set.View([
+    //47,11],13)
+    //;
 
-//karten elemente einbauen: 
 
-karte.fitBounds(markerGruppe.getBounds());
-karte.addControl(new L.Control.Fullscreen());
-var hash = new L.Hash(karte);
-var coords = new L.Control.Coordinates();
-coords.addTo(karte);
-karte.on('click', function(e) {
-	coords.setCoordinates(e);
+karte.locate({
+    setView:true,
+    maxZoom:16,
 });
 
+
+karte.on("locationfound",function(event){
+    console.log(event);
+    L.marker([
+        event.latitude, event.longitude
+    ]).addTo(karte);
+});
