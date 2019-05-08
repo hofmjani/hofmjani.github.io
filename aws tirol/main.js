@@ -81,7 +81,7 @@ kartenLayer.osm.addTo(karte);
 
 
 //Auswahlmenue hinzufügen
-L.control.layers({
+const layerControl = L.control.layers({
     "OpenStreetMap": kartenLayer.osm,
     "Geoloand Basemap": kartenLayer.geolandbasemap,
     "Geoland Besmap Overlay": kartenLayer.bmapoverlay,
@@ -103,14 +103,48 @@ karte.setView([
 
 //console.log(AWS);
 
-const awsTirol = L.featureGroup();
-L.geoJson(AWS)
-    .bindPopup(function(layer){
-        console.log("Layer",layer);
-        return `Temperatur: ${layer.feature.properties.LT} °C <br>
-        Datum: ${layer.feature.properties.date}`;
-    })
-    .addTo(awsTirol);
-awsTirol.addTo(karte);
-karte.fitBounds(awsTirol.getBounds());
+async function loadStations() {
+    const response = await fetch("https://aws.openweb.cc/stations");
+    const stations = await response.json();
+    const awsTirol = L.featureGroup();
+    L.geoJson(stations)
+        .bindPopup(function (layer) {
+            //console.log("Layer",layer);
+            const date = new Date(layer.feature.properties.date);
+            console.log("Datum:", date);
+            return `<h4>${layer.feature.properties.name}</h4>
+            Höhe [m] : ${layer.feature.geometry.coordinates[2]} <br>
+            Temperatur: ${layer.feature.properties.LT} °C <br>
+            Datum: ${date.toLocaleDateString("de-AT")}
+            ${date.toLocaleTimeString("de-AT")} <br>
+            Windgeschwindigkeit [km/h]: 
+            ${layer.feature.properties.WG ? layer.feature.properties.WG : `keine Daten `}
+            <hr>
+            <footer> Quelle: Land Tirol - <a href="https://data.tirol.gv.at">data.tirol.gv.at </a>
+            </footer> 
+            `;
+        })
+        .addTo(awsTirol);
+    awsTirol.addTo(karte);
+    karte.fitBounds(awsTirol.getBounds())
+    layerControl.addOverlay(awsTirol, "Wetterstationen Tirol");
 
+    //Windgeschwindigkeit mit Symbolen auf Karte anzeigen
+    L.geoJson(stations, {
+        pointToLayer: function (feature, latlng) {
+            if(feature.properties.WR){
+            return L.marker(latlng, {
+                icon: L.divIcon({
+                    html: '<i class="fas fa-arrow-alt-circle-up"></i>'
+                })
+            });
+
+        }
+
+    }
+
+    }).addTo(karte);
+
+}
+
+loadStations();
