@@ -125,19 +125,65 @@ async function loadStations() {
             `;
         })
         .addTo(awsTirol);
-    
+
     karte.fitBounds(awsTirol.getBounds())
     layerControl.addOverlay(awsTirol, "Wetterstationen Tirol");
     //awsTirol.addTo(karte)
 
     //Windgeschwindigkeit mit Symbolen auf Karte anzeigen
-    const windLayer= L.featureGroup();
+    const windLayer = L.featureGroup();
     L.geoJson(stations, {
         pointToLayer: function (feature, latlng) {
-            if(feature.properties.WR){
+            if (feature.properties.WR) {
+                let color = 'black';
+                if (feature.properties.WG > 20) {
+                    color = 'red';
+                }
+                return L.marker(latlng, {
+                    icon: L.divIcon({
+                        html: `<i style=" color:${color};transform: rotate(${feature.properties.WR}deg)"class="fas fa-arrow-alt-circle-up fa-2x"></i>`
+                    })
+                });
+
+            }
+
+        }
+
+    }).addTo(windLayer);
+    layerControl.addOverlay(windLayer, "Windrichtung");
+    //windLayer.addTo(karte)
+
+
+
+//Temperatur mit Symbolen auf Karte anzeigen
+const temperaturLayer = L.featureGroup();
+const farbPalette=[
+    [0,"blue"],
+    [1,"orange"],
+    [2,"red"],
+
+]
+L.geoJson(stations, {
+    pointToLayer: function (feature, latlng) {
+        if (feature.properties.LT) {
+            for(let i=0; i<farbPalette.length;i++){
+                console.log(farbPalette[i],feature.properties.LT);
+                if(feature.properties.LT<farbPalette[i][0]){
+                    color=farbPalette[i][1];
+                    break;
+
+                }
+            }
+
+
+
+          //  let color = 'blue';
+          //  if (feature.properties.LT > 0) {
+          //      color = 'red';
+          //  }
             return L.marker(latlng, {
                 icon: L.divIcon({
-                    html: `<i style=" transform: rotate(${feature.properties.WR}deg)"class="fas fa-arrow-alt-circle-up fa-2x"></i>`
+                    html: `<div class="temperaturLabel" style="background-color:${color}">${feature.properties.LT}</div>`
                 })
             });
 
@@ -145,9 +191,16 @@ async function loadStations() {
 
     }
 
-    }).addTo(windLayer);
-    layerControl.addOverlay(windLayer, "Windrichtung");
-    windLayer.addTo(karte)
+}).addTo(temperaturLayer);
+layerControl.addOverlay(temperaturLayer, "Temperatur");
+temperaturLayer.addTo(karte)
+
+
+
+
+
+
+
 }
 
 loadStations();
