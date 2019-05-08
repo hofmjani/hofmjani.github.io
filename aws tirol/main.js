@@ -100,36 +100,3 @@ L.control.layers({
 karte.setView([
     47.267222,11.392778],13);
 
-
-
-
-console.log(SPORTSTAETTEN);
-
-
-for(let staette of SPORTSTAETTEN) {
-    //console.log(staette);
-    //pictogram definieren: 
-    let piktogramm = L.icon({
-       iconUrl: `icons/icon_${staette.icon}_schwarz_auf_weiss_250px.png`,
-       iconSize: [15, 15],
-    });
-
-//marker zeichnen
-    let positionsMarker=L.marker([
-        staette.lat,staette.lng], {
-            icon: piktogramm
-        }
-        
-        ).addTo(karte);
-
-//popup hinzufügen
-    positionsMarker.bindPopup(
-        `<h3> ${staette.name}</h3>
-        <h2> ${staette.typ}</h2>)`
-    );
-
-
-   
-};
-
-
