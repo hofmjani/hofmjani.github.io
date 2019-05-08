@@ -158,14 +158,21 @@ async function loadStations() {
 //Temperatur mit Symbolen auf Karte anzeigen
 const temperaturLayer = L.featureGroup();
 const farbPalette=[
-    [0,"blue"],
+    [0,"#646664"],
     [1,"orange"],
     [2,"red"],
+    [3,"yellow"],
+    [4,"green"],
+    [-30,"#fff"],
+    [-25,"#646664"],
+    [-20,"#8c8a8c"]
 
-]
+];
+//die Schleife weißt die Temperatur für die Palette zu  
 L.geoJson(stations, {
     pointToLayer: function (feature, latlng) {
         if (feature.properties.LT) {
+            let color="red";
             for(let i=0; i<farbPalette.length;i++){
                 console.log(farbPalette[i],feature.properties.LT);
                 if(feature.properties.LT<farbPalette[i][0]){
