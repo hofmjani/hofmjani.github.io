@@ -1,4 +1,3 @@
-
 //hier: deutsche variablen verwenden (in html englische variablen)
 
 const div = document.getElementById("map");
@@ -22,7 +21,7 @@ let karte = L.map("map");
 
 //auf ausschnitt zoomen: 
 //karte.setView(
- // [47.2, 11.2], 9
+// [47.2, 11.2], 9
 //)
 
 //open street map einbinden
@@ -98,5 +97,20 @@ L.control.layers({
 
 
 karte.setView([
-    47.267222,11.392778],13);
+    47.267222, 11.392778
+], 15);
+
+
+//console.log(AWS);
+
+const awsTirol = L.featureGroup();
+L.geoJson(AWS)
+    .bindPopup(function(layer){
+        console.log("Layer",layer);
+        return `Temperatur: ${layer.feature.properties.LT} °C <br>
+        Datum: ${layer.feature.properties.date}`;
+    })
+    .addTo(awsTirol);
+awsTirol.addTo(karte);
+karte.fitBounds(awsTirol.getBounds());
 
