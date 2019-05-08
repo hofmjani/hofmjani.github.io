@@ -125,17 +125,19 @@ async function loadStations() {
             `;
         })
         .addTo(awsTirol);
-    awsTirol.addTo(karte);
+    
     karte.fitBounds(awsTirol.getBounds())
     layerControl.addOverlay(awsTirol, "Wetterstationen Tirol");
+    //awsTirol.addTo(karte)
 
     //Windgeschwindigkeit mit Symbolen auf Karte anzeigen
+    const windLayer= L.featureGroup();
     L.geoJson(stations, {
         pointToLayer: function (feature, latlng) {
             if(feature.properties.WR){
             return L.marker(latlng, {
                 icon: L.divIcon({
-                    html: '<i class="fas fa-arrow-alt-circle-up"></i>'
+                    html: `<i style=" transform: rotate(${feature.properties.WR}deg)"class="fas fa-arrow-alt-circle-up fa-2x"></i>`
                 })
             });
 
@@ -143,8 +145,9 @@ async function loadStations() {
 
     }
 
-    }).addTo(karte);
-
+    }).addTo(windLayer);
+    layerControl.addOverlay(windLayer, "Windrichtung");
+    windLayer.addTo(karte)
 }
 
 loadStations();
