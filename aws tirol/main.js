@@ -158,46 +158,76 @@ async function loadStations() {
 //Temperatur mit Symbolen auf Karte anzeigen
 const temperaturLayer = L.featureGroup();
 const farbPalette=[
-    [0,"#646664"],
-    [1,"orange"],
-    [2,"red"],
-    [3,"yellow"],
-    [4,"green"],
-    [-30,"#fff"],
-    [-25,"#646664"],
-    [-20,"#8c8a8c"]
+  
 
+    [-28, rgb(100,102,100)],
+    [-26, rgb(140,138,140)],
+    [-24, rgb(180,178,180)],
+    [-22, rgb(204,206,204)],
+    [-20, rgb(228,230,228)],
+    [-18, rgb(119,45,118)],
+    [-16, rgb(117,35,176)],
+    [-14, rgb(210,25,209)],
+    [-12, rgb(225,0,225)],
+    [-10, rgb(225,148,225)],
+    [-8, rgb(56,0,209)],
+    [-6, rgb(50,90,254)],
+    [-4, rgb(38,149,225)],
+    [-2, rgb(0,205,0)],
+    [0, rgb(0,225,254)],
+    [2, rgb(0,120,0)],
+    [4, rgb(0,157,0)],
+    [6, rgb(0,188,2)],
+    [8, rgb(0,226,0)],
+    [10, rgb(0,225,0)],
+    [12, rgb(252,255,0)],
+    [14, rgb(235,242,0)],
+    [16, rgb(235,225,0)],
+    [18, rgb(225,209,0)],
+    [20, rgb(225,189,0)],
+    [22, rgb(225,173,0)],
+    [24, rgb(225,156,0)],
+    [26, rgb(255,120,0)],
+    [28, rgb(243,1,2)],
+    [30, rgb(210,0,0)],
+    [32, rgb(193,0,0)],
+    [34, rgb(117,0,0)],
+    [36, rgb(161,0,0)],
+    [38, rgb(144,0,0)],
+    [40, rgb(119,1,0)],
+    [42, rgb(95,1,0)],
+    [46, rgb(70,1,1)],
+    [99, rgb(46,2,3)],
+   
 ];
-//die Schleife weißt die Temperatur für die Palette zu  
-L.geoJson(stations, {
-    pointToLayer: function (feature, latlng) {
-        if (feature.properties.LT) {
-            let color="red";
-            for(let i=0; i<farbPalette.length;i++){
-                console.log(farbPalette[i],feature.properties.LT);
-                if(feature.properties.LT<farbPalette[i][0]){
-                    color=farbPalette[i][1];
-                    break;
 
+L.geoJson(stations, {
+    pointToLayer: function(feature, latlng) {
+        if (feature.properties.LT) {
+            // Farbe des letzten Eintrags der Farbpalette als Standardfarbe setzen 
+            let color = farbPalette[farbPalette.length-1][1];
+            
+            // jeden Temperaturwert mit den Schwellen der Farbpalette vergleichen
+            for (let i=0; i<farbPalette.length; i++) {
+                //console.log(farbPalette[i],feature.properties.LT);
+                if (feature.properties.LT < farbPalette[i][0]) {
+                    // der Temperaturwert ist kleiner als die Schwelle -> die entsprechende Farbe zuweisen
+                    color = farbPalette[i][1];
+
+                    // Überprüfung beenden, weil die Farbe bereits ermittelt ist
+                    break;
+                } else {
+                    // weiter zum nächsten Schwellenwert
                 }
             }
-
-
-
-          //  let color = 'blue';
-          //  if (feature.properties.LT > 0) {
-          //      color = 'red';
-          //  }
+            // Marker mit Temperaturwert und Hintergrundfarbe zurückgeben
             return L.marker(latlng, {
                 icon: L.divIcon({
                     html: `<div class="temperaturLabel" style="background-color:${color}">${feature.properties.LT}</div>`
-                })
+                })                    
             });
-
         }
-
     }
-
 }).addTo(temperaturLayer);
 layerControl.addOverlay(temperaturLayer, "Temperatur");
 temperaturLayer.addTo(karte)
