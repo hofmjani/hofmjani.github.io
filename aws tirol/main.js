@@ -155,82 +155,79 @@ async function loadStations() {
 
 
 
-//Temperatur mit Symbolen auf Karte anzeigen
-const temperaturLayer = L.featureGroup();
-const farbPalette=[
-  
+    //Temperatur mit Symbolen auf Karte anzeigen
+    const temperaturLayer = L.featureGroup();
+    const farbPalette = [
 
-    [-28, rgb(100,102,100)],
-    [-26, rgb(140,138,140)],
-    [-24, rgb(180,178,180)],
-    [-22, rgb(204,206,204)],
-    [-20, rgb(228,230,228)],
-    [-18, rgb(119,45,118)],
-    [-16, rgb(117,35,176)],
-    [-14, rgb(210,25,209)],
-    [-12, rgb(225,0,225)],
-    [-10, rgb(225,148,225)],
-    [-8, rgb(56,0,209)],
-    [-6, rgb(50,90,254)],
-    [-4, rgb(38,149,225)],
-    [-2, rgb(0,205,0)],
-    [0, rgb(0,225,254)],
-    [2, rgb(0,120,0)],
-    [4, rgb(0,157,0)],
-    [6, rgb(0,188,2)],
-    [8, rgb(0,226,0)],
-    [10, rgb(0,225,0)],
-    [12, rgb(252,255,0)],
-    [14, rgb(235,242,0)],
-    [16, rgb(235,225,0)],
-    [18, rgb(225,209,0)],
-    [20, rgb(225,189,0)],
-    [22, rgb(225,173,0)],
-    [24, rgb(225,156,0)],
-    [26, rgb(255,120,0)],
-    [28, rgb(243,1,2)],
-    [30, rgb(210,0,0)],
-    [32, rgb(193,0,0)],
-    [34, rgb(117,0,0)],
-    [36, rgb(161,0,0)],
-    [38, rgb(144,0,0)],
-    [40, rgb(119,1,0)],
-    [42, rgb(95,1,0)],
-    [46, rgb(70,1,1)],
-    [99, rgb(46,2,3)],
-   
-];
+        [-28, "#646664"],
+        [-26, "#8c8a8c"],
+        [-24, "#b4b2b4"],
+        [-22, "#cccecc"],
+        [-20, "#e4e6e4"],
+        [-18, "#772d76"],
+        [-16, "#b123b0"],
+        [-14, "#d219d1"],
+        [-12, "#f0f"],
+        [-10, "#ff94ff"],
+        [-8, "#3800d1"],
+        [-6, "#325afe"],
+        [-4, "#2695ff"],
+        [-2, "#00cdff"],
+        [0, "#007800"],
+        [2, "#009d00"],
+        [4, "#00bc02"],
+        [6, "#00e200"],
+        [8, "#0f0"],
+        [10, "#fcff00"],
+        [12, "#fdf200"],
+        [14, "#fde100"],
+        [16, "#ffd100"],
+        [18, "#ffbd00"],
+        [20, "#ffad00"],
+        [22, "#ff9c00"],
+        [24, "#ff7800"],
+        [26, "red"],
+        [28, "#f30102"],
+        [30, "#d20000"],
+        [32, "#c10000"],
+        [34, "#b10000"],
+        [36, "#a10000"],
+        [38, "#900000"],
+        [40, "#770100"],
+        [42, "#5f0100"],
+        [44, "#460101"],
+        [46, "#2e0203"],
+    ];
+    L.geoJson(stations, {
+        pointToLayer: function (feature, latlng) {
+            if (feature.properties.LT) {
+                // Farbe des letzten Eintrags der Farbpalette als Standardfarbe setzen 
+                let color = farbPalette[farbPalette.length - 1][1];
 
-L.geoJson(stations, {
-    pointToLayer: function(feature, latlng) {
-        if (feature.properties.LT) {
-            // Farbe des letzten Eintrags der Farbpalette als Standardfarbe setzen 
-            let color = farbPalette[farbPalette.length-1][1];
-            
-            // jeden Temperaturwert mit den Schwellen der Farbpalette vergleichen
-            for (let i=0; i<farbPalette.length; i++) {
-                //console.log(farbPalette[i],feature.properties.LT);
-                if (feature.properties.LT < farbPalette[i][0]) {
-                    // der Temperaturwert ist kleiner als die Schwelle -> die entsprechende Farbe zuweisen
-                    color = farbPalette[i][1];
+                // jeden Temperaturwert mit den Schwellen der Farbpalette vergleichen
+                for (let i = 0; i < farbPalette.length; i++) {
+                    //console.log(farbPalette[i],feature.properties.LT);
+                    if (feature.properties.LT < farbPalette[i][0]) {
+                        // der Temperaturwert ist kleiner als die Schwelle -> die entsprechende Farbe zuweisen
+                        color = farbPalette[i][1];
 
-                    // Überprüfung beenden, weil die Farbe bereits ermittelt ist
-                    break;
-                } else {
-                    // weiter zum nächsten Schwellenwert
+                        // Überprüfung beenden, weil die Farbe bereits ermittelt ist
+                        break;
+                    } else {
+                        // weiter zum nächsten Schwellenwert
+                    }
                 }
+                // Marker mit Temperaturwert und Hintergrundfarbe zurückgeben
+                return L.marker(latlng, {
+                    icon: L.divIcon({
+                        html: `<div class="temperaturLabel" style="background-color:${color}">${feature.properties.LT}</div>`
+                    })
+                });
             }
-            // Marker mit Temperaturwert und Hintergrundfarbe zurückgeben
-            return L.marker(latlng, {
-                icon: L.divIcon({
-                    html: `<div class="temperaturLabel" style="background-color:${color}">${feature.properties.LT}</div>`
-                })                    
-            });
         }
-    }
-}).addTo(temperaturLayer);
-layerControl.addOverlay(temperaturLayer, "Temperatur");
-temperaturLayer.addTo(karte)
+    }).addTo(temperaturLayer);
+    layerControl.addOverlay(temperaturLayer, "Temperatur");
+    temperaturLayer.addTo(karte)
 
 
 
