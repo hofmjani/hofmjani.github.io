@@ -134,49 +134,19 @@ async function loadStations() {
     const windLayer = L.featureGroup();
     const farbPaletteWind = [
 
-        [3, "#00b900"],
+        [-99, "#00b900"],
         [4, "#10cd24"],
         [5, "#72d475"],
         [6, "#fed6d3"],
         [7, "#ffb6b3"],
         [8, "#ff9e9a"],
-        [9, "##ff8281"],
+        [9, "#ff8281"],
         [10, "#ff6160"],
         [11, "#ff453c"],
-        [12, "#ff200e"],
+        [190, "#ff200e"],
        
     ];
-    /*
-    L.geoJson(stations, {
-        pointToLayer: function (feature, latlng) {
-            if (feature.properties.WG) {
-                // Farbe des letzten Eintrags der Farbpalette als Standardfarbe setzen 
-                let color = farbPaletteWind[farbPaletteWind.length - 1][1];
-
-                // jeden Temperaturwert mit den Schwellen der Farbpalette vergleichen
-                for (let i = 0; i < farbPaletteWind.length; i++) {
-                    //console.log(farbPalette[i],feature.properties.LT);
-                    if (feature.properties.LT < farbPaletteWind[i][0]) {
-                        // der Temperaturwert ist kleiner als die Schwelle -> die entsprechende Farbe zuweisen
-                        color = farbPaletteWind[i][1];
-
-                        // Überprüfung beenden, weil die Farbe bereits ermittelt ist
-                        break;
-                    } else {
-                        // weiter zum nächsten Schwellenwert
-                    }
-                }
-                // Marker mit Temperaturwert und Hintergrundfarbe zurückgeben
-                return L.marker(latlng, {
-                    icon: L.divIcon({
-                        html: `<i style=" color:${color}>${feature.properties.WG};transform: rotate(${feature.properties.WR}deg)"class="fas fa-arrow-alt-circle-up fa-2x"></i>`,
-                        html: `<div class="temperaturLabel" style="background-color:${color}">${feature.properties.WG}</div>`
-                    })
-                });
-            }
-        }
-
-    */
+  
     L.geoJson(stations, {
         pointToLayer: function (feature, latlng) {
             if (feature.properties.WG) {
@@ -195,8 +165,7 @@ async function loadStations() {
                 }
                 return L.marker(latlng, {
                     icon: L.divIcon({
-                        html: `<i style=" color:${color}>${feature.properties.WG};transform: rotate(${feature.properties.WR}deg)"class="fas fa-arrow-alt-circle-up fa-2x"></i>`
-
+                        html: `<i class="fas fa-arrow-alt-circle-up fa-2x" style="color:${color}; transform: rotate(${feature.properties.WR}deg")</i>`
                     })
                 });
 
