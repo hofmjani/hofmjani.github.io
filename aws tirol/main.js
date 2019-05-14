@@ -134,16 +134,16 @@ async function loadStations() {
     const windLayer = L.featureGroup();
     const farbPaletteWind = [
 
-        [-99, "#00b900"],
-        [4, "#10cd24"],
-        [5, "#72d475"],
-        [6, "#fed6d3"],
-        [7, "#ffb6b3"],
-        [8, "#ff9e9a"],
-        [9, "#ff8281"],
-        [10, "#ff6160"],
-        [11, "#ff453c"],
-        [190, "#ff200e"],
+        [11, "#00b900"],
+        [24, "#10cd24"],
+        [38, "#72d475"],
+        [49, "#fed6d3"],
+        [61, "#ffb6b3"],
+        [74, "#ff9e9a"],
+        [88, "#ff8281"],
+        [102, "#ff6160"],
+        [117, "#ff453c"],
+        [9999, "#ff200e"],
        
     ];
   
@@ -175,7 +175,7 @@ async function loadStations() {
 
     }).addTo(windLayer);
     layerControl.addOverlay(windLayer, "Windrichtung");
-    windLayer.addTo(karte)
+ //   windLayer.addTo(karte)
 
 
 
@@ -251,7 +251,7 @@ async function loadStations() {
         }
     }).addTo(temperaturLayer);
     layerControl.addOverlay(temperaturLayer, "Temperatur");
-    //temperaturLayer.addTo(karte)
+    temperaturLayer.addTo(karte)
 
 
 
