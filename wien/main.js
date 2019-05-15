@@ -80,7 +80,7 @@ const url = 'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&ve
 function makeMarker(feature, latlng) { //Marker definieren 
     const fotoIcon = L.icon({ //Icon definieren
         iconUrl: 'http://www.data.wien.gv.at/icons/sehenswuerdigogd.svg',
-        iconSize: [36, 36]
+        iconSize: [16, 16]
     });
     const sightMarker = L.marker(latlng, { //marker setzen und icon verwenden 
         icon: fotoIcon
@@ -89,7 +89,7 @@ function makeMarker(feature, latlng) { //Marker definieren
     sightMarker.bindPopup(` 
          <h3>${feature.properties.NAME}</h3>
          <p>${feature.properties.BEMERKUNG}</p>
-         <footer> <a href="${feature.properties.WEITERE_INF}">Weblink</a></footer>
+         <footer> <a target="blank", href="${feature.properties.WEITERE_INF}">Weblink</a></footer>
   `);
     return sightMarker; //Marker ausgeben 
 }
@@ -108,7 +108,8 @@ async function loadSights(url) { //Vorbereitung wie beim letzten mal
     const suchFeld = new L.Control.Search({
         layer: sehenswürdigkeitenClusterGruppe,
         propertyName: "NAME",
-        zoom:17
+        zoom:17, 
+        initial: false,
     });
     karte.addControl(suchFeld);
 
@@ -128,3 +129,35 @@ massstab.addTo(karte);
 //plugin runterladen von https://github.com/stefanocudini/leaflet-search/releases und Dateien im Dist ordner in einen neuen Ordner im Wienordner speichern -> Dieser heißt plugins 
 
 //dann in min.js und min.css in html header einbauen (siehe html!)
+
+
+
+//spazierwege hinzufügen
+
+
+const wege = 'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERLINIEOGD &srsName=EPSG:4326&outputFormat=json'
+
+function linienPopup(feature, layer){
+    const popup = `
+    <h3>${feature.properties.NAME}</h3>
+    `;
+    layer.bindPopup(popup);
+}
+
+async function loadWege(wegeUrl){
+    const antwort=await fetch(wegeUrl);
+    const wegeData = await antwort.json();
+    const wegeJson=L.geoJson(wegeData,{
+        style: function(){
+            return{
+                color:"grey"
+            };
+        },
+        onEachFeature:linienPopup
+
+    });
+    karte.addLayer(wegeJson);
+    layerControl.addOverlay(wegeJson,"Spazierwege");
+
+}
+loadWege(wege)
