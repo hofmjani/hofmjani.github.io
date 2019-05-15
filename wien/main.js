@@ -78,26 +78,27 @@ const url = 'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&ve
 
 
 function makeMarker(feature, latlng) { //Marker definieren 
-    const icon = L.icon({ //Icon definieren
+    const fotoIcon = L.icon({ //Icon definieren
         iconUrl: 'http://www.data.wien.gv.at/icons/sehenswuerdigogd.svg',
         iconSize: [36, 36]
     });
-    const marker = L.marker(latlng, { //marker setzen und icon verwenden 
-        icon: icon
+    const sightMarker = L.marker(latlng, { //marker setzen und icon verwenden 
+        icon: fotoIcon
     });
     //Popup definieren: mit den Properties Namen und Bemerkung
-    marker.bindPopup(` 
+    sightMarker.bindPopup(` 
          <h3>${feature.properties.NAME}</h3>
          <p>${feature.properties.BEMERKUNG}</p>
+         <footer> <a href="${feature.properties.WEITERE_INF}">Weblink</a></footer>
   `);
-    return marker; //Marker ausgeben 
+    return sightMarker; //Marker ausgeben 
 }
 
 async function loadSights(url) { //Vorbereitung wie beim letzten mal
     const response = await fetch(url); //Hol die daten vom Url
     const sightsData = await response.json(); //Warte drauf und wandel in das json format um 
     const geoJson = L.geoJson(sightsData, { //Leaflet: soll die Daten aufrufen 
-        pointToLayer: makeMarker
+        pointToLayer: makeMarker //wird in eigener Funktion definiert 
     });
     karte.addLayer(geoJson);
 }
