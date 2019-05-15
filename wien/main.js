@@ -104,7 +104,7 @@ async function loadSights(url) { //Vorbereitung wie beim letzten mal
     sehenswürdigkeitenClusterGruppe.addLayer(geoJson);
     karte.addLayer(sehenswürdigkeitenClusterGruppe);
     layerControl.addOverlay(sehenswürdigkeitenClusterGruppe, "Sehenswürdigkeiten")
-
+//Suchfeld einfügen
     const suchFeld = new L.Control.Search({
         layer: sehenswürdigkeitenClusterGruppe,
         propertyName: "NAME",
