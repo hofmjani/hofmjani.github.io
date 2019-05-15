@@ -132,9 +132,9 @@ async function loadStations() {
 
     //Windgeschwindigkeit mit Symbolen auf Karte anzeigen
     const windLayer = L.featureGroup();
-    const farbPaletteWind = [
+    const farbPaletteWind = [ //verschachtelter Array -> [[Nummer, Farbe]]
 
-        [11, "#00b900"],
+        [11, "#00b900"], 
         [24, "#10cd24"],
         [38, "#72d475"],
         [49, "#fed6d3"],
@@ -146,6 +146,8 @@ async function loadStations() {
         [9999, "#ff200e"],
        
     ];
+    
+    //indexelement immer eins weniger als objekte im Array
   
     L.geoJson(stations, {
         pointToLayer: function (feature, latlng) {
