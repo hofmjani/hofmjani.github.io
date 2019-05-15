@@ -95,12 +95,36 @@ function makeMarker(feature, latlng) { //Marker definieren
 }
 
 async function loadSights(url) { //Vorbereitung wie beim letzten mal
+    const sehenswürdigkeitenClusterGruppe = L.markerClusterGroup(); // Cluster von Leaflet einfügen (Diese stylsheet und css müssen im html verlinkt werden im header)
     const response = await fetch(url); //Hol die daten vom Url
     const sightsData = await response.json(); //Warte drauf und wandel in das json format um 
     const geoJson = L.geoJson(sightsData, { //Leaflet: soll die Daten aufrufen 
         pointToLayer: makeMarker //wird in eigener Funktion definiert 
     });
-    karte.addLayer(geoJson);
+    sehenswürdigkeitenClusterGruppe.addLayer(geoJson);
+    karte.addLayer(sehenswürdigkeitenClusterGruppe);
+    layerControl.addOverlay(sehenswürdigkeitenClusterGruppe, "Sehenswürdigkeiten")
+
+    const suchFeld = new L.Control.Search({
+        layer: sehenswürdigkeitenClusterGruppe,
+        propertyName: "NAME",
+        zoom:17
+    });
+    karte.addControl(suchFeld);
+
 }
 
 loadSights(url);
+
+const massstab = L.control.scale({
+    imperial: false,
+    metric: true,
+
+});
+
+massstab.addTo(karte);
+
+
+//plugin runterladen von https://github.com/stefanocudini/leaflet-search/releases und Dateien im Dist ordner in einen neuen Ordner im Wienordner speichern -> Dieser heißt plugins 
+
+//dann in min.js und min.css in html header einbauen (siehe html!)
