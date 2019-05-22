@@ -70,45 +70,60 @@ karte.addControl(new L.Control.Fullscreen());
 
 //Wikipedia Artikel laden
 
+const wikipediaGruppe = L.featureGroup().addTo(karte);
+layerControl.addOverlay(wikipediaGruppe, "Wikipedia Artikel")
 
-async function wikipediaArtikelLaden(url){
+
+async function wikipediaArtikelLaden(url) {
+    wikipediaGruppe.clearLayers();
+
     console.log("Lade", url);
 
     const antwort = await fetch(url);
-    const jsonDaten = await antwort.json ();
+    const jsonDaten = await antwort.json();
 
     console.log(jsonDaten);
-    for (let artikel of jsonDaten.geonames){
-            const wikipediaMarker=L.marker([artikel.lat, artikel.lng],{
-               icon:L.icon({
-                   iconUrl:"icons/Wikipedia-logo-de.png",
-                   iconSize:[30,30]
-               })
-            }).addTo(karte);
+    for (let artikel of jsonDaten.geonames) {
+        const wikipediaMarker = L.marker([artikel.lat, artikel.lng], {
+            icon: L.icon({
+                iconUrl: "icons/Wikipedia-logo-de.png",
+                iconSize: [30, 30]
+            })
+        }).addTo(wikipediaGruppe);
 
-            wikipediaMarker.bindPopup(
+        wikipediaMarker.bindPopup(
             `<h3>${artikel.title}</h3>
             <p>${artikel.summary}</p>
             <footer> <a target="_blank" href="https://${artikel.wikipediaUrl}">Weblink</ a> </footer>`
-            );
+        );
     }
 }
+//
+let letzteGeonamesUrl = null;
 
-karte.on("load zoomend moveend", function() {
+karte.on("load zoomend moveend", function () {
     console.log("Karte geladen", karte.getBounds());
 
     let ausschnitt = {
-        n : karte.getBounds().getNorth(),
-        s : karte.getBounds().getSouth(),
-        o : karte.getBounds().getEast(),
-        w : karte.getBounds().getWest(),
+        n: karte.getBounds().getNorth(),
+        s: karte.getBounds().getSouth(),
+        o: karte.getBounds().getEast(),
+        w: karte.getBounds().getWest(),
     }
     console.log(ausschnitt);
     const geonamesUrl = `http://api.geonames.org/wikipediaBoundingBoxJSON?formatted=true&north=${ausschnitt.n}&south=${ausschnitt.s}&east=${ausschnitt.o}&west=${ausschnitt.w}&username=webmapping&style=full&maxRows=5&lang=de`;
     console.log(geonamesUrl);
-//Json-Artikel laden
-wikipediaArtikelLaden(geonamesUrl);
+// Sicherstellen dass man nur dann was abholt wenn sich die URL geändert hat 
+    if (geonamesUrl != letzteGeonamesUrl) {
+        wikipediaArtikelLaden(geonamesUrl);
+        letzteGeonamesUrl=geonamesUrl;
+    }
+    //Json-Artikel laden
+
 });
+
+
+
 karte.setView([48.208333, 16.373056], 11);
 
 // https://github.com/Norkart/Leaflet-MiniMap
@@ -153,18 +168,18 @@ async function loadWlan(url) { //Vorbereitung wie beim letzten mal
     const wlanData = await response.json(); //Warte drauf und wandel in das json format um 
     const geoJson = L.geoJson(wlanData, { //Leaflet: soll die Daten aufrufen 
         pointToLayer: makeMarker //wird in eigener Funktion definiert 
-});
-wlanClusterGruppe.addLayer(geoJson);
-karte.addLayer(wlanClusterGruppe);
-layerControl.addOverlay(wlanClusterGruppe, "WLAN Hotspots")
-//Suchfeld einfügen
-const suchFeld = new L.Control.Search({
-    layer: wlanClusterGruppe,
-    propertyName: "NAME",
-    zoom:17, 
-    initial: false,
-});
-karte.addControl(suchFeld);
+    });
+    wlanClusterGruppe.addLayer(geoJson);
+    karte.addLayer(wlanClusterGruppe);
+    layerControl.addOverlay(wlanClusterGruppe, "WLAN Hotspots")
+    //Suchfeld einfügen
+    const suchFeld = new L.Control.Search({
+        layer: wlanClusterGruppe,
+        propertyName: "NAME",
+        zoom: 17,
+        initial: false,
+    });
+    karte.addControl(suchFeld);
 
 }
 
