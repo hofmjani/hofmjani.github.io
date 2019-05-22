@@ -13,13 +13,20 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
     <script src="blicke.js"></script>
-    
+
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css'
         rel='stylesheet' />
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-hash/0.2.1/leaflet-hash.js"></script>
     <link href="plugins/Control.Coordinates.css" rel="stylesheet">
     <script src="plugins/Control.Coordinates.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/gpx.min.js"></script>
+
+    <script src="https://unpkg.com/d3@4.13.0/build/d3.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation@latest/leaflet-elevation.css" />
+    <script src="https://unpkg.com/@raruto/leaflet-elevation@latest/leaflet-elevation.js"></script>
 
     <script defer src="main.js"></script>
 
@@ -70,15 +77,20 @@
 
         <!-- TODO: eine Überschrift 2 einer Sehenswürdigkeit der Etappe-->
         <!-- TODO: eine vollständige Abbildung mit Bild im JPG-Format und kursiver Bildüberschrift für diese Sehenswürdigkeit. Das Bild soll attraction.jpg heißen, maximal 900 Pixel breit oder hoch sein und im Ordner images/ liegen. Das Bild soll von https://commons.wikimedia.org/ oder https://pixabay.com/ stammen und eine Public Domain, oder CC BY-SA Lizenz besitzen. -->
-        <P>Die Badener Hütte (auch: Badner Hütte bzw. Badnerhütte) ist eine in der östlichen Venedigergruppe (Österreich) am Frosnitzkees gelegene Alpenvereinshütte. Die Schutzhütte der 1. Kategorie wird von Ende Juni bis Mitte September bewirtschaftet. Außerhalb der Bewirtschaftungszeit der Hütte steht ein Winterraum zur Verfügung, der immer geöffnet ist. Ein AV-Schlüssel ist nicht notwendig. <br> <br>
-        Zustiege: 
-        <ul>
-            <li> Gruben (1164 m) bei Matrei in Osttirol ist mit PKW und Linienbussen über die Felbertauernstraße erreichbar. Von dort durch das Froßnitztal in 5 Stunden Gehzeit zur Hütte.</li>
-            <li>
-                 Vom Matreier Tauernhaus (1512 m) durch das Gschlößtal zum Löbbentörl (2770 m) und dann Abstieg zur Hütte. Gehzeit 6 Stunden.
-            </li>
-        </ul>
-           
+        <P>Die Badener Hütte (auch: Badner Hütte bzw. Badnerhütte) ist eine in der östlichen Venedigergruppe
+            (Österreich) am Frosnitzkees gelegene Alpenvereinshütte. Die Schutzhütte der 1. Kategorie wird von Ende Juni
+            bis Mitte September bewirtschaftet. Außerhalb der Bewirtschaftungszeit der Hütte steht ein Winterraum zur
+            Verfügung, der immer geöffnet ist. Ein AV-Schlüssel ist nicht notwendig. <br> <br>
+            Zustiege:
+            <ul>
+                <li> Gruben (1164 m) bei Matrei in Osttirol ist mit PKW und Linienbussen über die Felbertauernstraße
+                    erreichbar. Von dort durch das Froßnitztal in 5 Stunden Gehzeit zur Hütte.</li>
+                <li>
+                    Vom Matreier Tauernhaus (1512 m) durch das Gschlößtal zum Löbbentörl (2770 m) und dann Abstieg zur
+                    Hütte. Gehzeit 6 Stunden.
+                </li>
+            </ul>
+
             (Quelle: <a href="https://de.wikipedia.org/wiki/Badener_H%C3%BCtte">Wikipedia) </a></P>
         <!-- TODO: ein Absatz mit der Beschreibung der Sehenswürdigkeit aus der Wikipedia plus einem Link auf die Wikipedia-Seite in der Form "(Quelle: Wikipedia)", das Wort "Wikipedia" als Link -->
 
@@ -92,7 +104,11 @@
         <!-- TODO: eine vollständige Abbildung mit Bild im JPG-Format und kursiver Bildüberschrift für diese Sehenswürdigkeit. Das Bild soll attraction.jpg heißen, maximal 900 Pixel breit oder hoch sein und im Ordner images/ liegen. Das Bild soll von https://commons.wikimedia.org/ oder https://pixabay.com/ stammen und eine Public Domain, oder CC BY-SA Lizenz besitzen. -->
         <P>Das Matreier Tauernhaus ist ein Tauernhaus in der Gemeinde Matrei in Osttirol (Fraktion Tauer). Das Matreier
             Tauernhaus liegt auf 1511 m ü. A. in Osttirol (Österreich) nordwestlich unterhalb des
-            Felbertauerntunnel-Südportals am Tauernbach, der das Tauerntal durchfließt, im Nationalpark Hohe Tauern. Das Matreier Tauernhaus ist ein Hotel. Daneben befindet sich der dazugehörige gebührenpflichtige Wanderparkplatz, eine Kapelle sowie eine Jugendherberge. Beim Matreier Tauernhaus handelt es sich um die älteste Talunterkunft in diesem Gebiet, sie wurde einst Gastschwaig genannt und besteht seit der frühen Neuzeit (1562). Es diente als Lazarett und Herberge für die Begeher (Händler, Säumer) des Felber Tauern.
+            Felbertauerntunnel-Südportals am Tauernbach, der das Tauerntal durchfließt, im Nationalpark Hohe Tauern. Das
+            Matreier Tauernhaus ist ein Hotel. Daneben befindet sich der dazugehörige gebührenpflichtige
+            Wanderparkplatz, eine Kapelle sowie eine Jugendherberge. Beim Matreier Tauernhaus handelt es sich um die
+            älteste Talunterkunft in diesem Gebiet, sie wurde einst Gastschwaig genannt und besteht seit der frühen
+            Neuzeit (1562). Es diente als Lazarett und Herberge für die Begeher (Händler, Säumer) des Felber Tauern.
             (Quelle: <a href="https://de.wikipedia.org/wiki/Matreier_Tauernhaus">Wikipedia) </a></P>
         <!-- TODO: ein Absatz mit der Beschreibung der Sehenswürdigkeit aus der Wikipedia plus einem Link auf die Wikipedia-Seite in der Form "(Quelle: Wikipedia)", das Wort "Wikipedia" als Link -->
 
@@ -102,6 +118,8 @@
             data-lat2=47.080833 data-lng2=12.425556 data-title2="Start: Badener Hütte" extent-lat=47.101860
             extent-lng=12.466025>
         </div>
+
+        <div id="elevation-div"></div>
 
         <!-- TODO: ein div-Element mit dem id-Attribut "map" und drei weiteren Attributen data-lat, data-lng und data-title. Die Koordinaten von data-lat und data-lng sind als Dezimalgrad mit einem "." als Komma zu schreiben und aus der Wikipedia zu entnehmen. Das data-title Attribut enthält einen Titel für die oben verwendete Sehenswürdigkeit
         -->

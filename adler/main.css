@@ -76,6 +76,11 @@ main figure img {
 
 }
 
+#elevation-div{
+    width: 90%;
+    height:200px;
+}
+
 .back {
     float: left;
 }

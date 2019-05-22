@@ -147,7 +147,28 @@ karte.addControl(new L.Control.Fullscreen());
 var hash = new L.Hash(karte);
 var coords = new L.Control.Coordinates();
 coords.addTo(karte);
-karte.on('click', function(e) {
-	coords.setCoordinates(e);
+karte.on('click', function (e) {
+    coords.setCoordinates(e);
 });
+
+//gpx track laden
+
+new L.GPX("AdlerwegEtappe05.gpx", {
+    async: true,
+    marker_options: {
+        startIconUrl: 'images/pin-icon-start.png',
+        endIconUrl: 'images/pin-icon-end.png',
+        shadowUrl: 'images/pin-shadow.png'
+    }
+}).on('loaded', function (e) {
+    karte.fitBounds(e.target.getBounds());
+}).on('addline', function (e) {
+    console.log('linie geladen');
+    const controlElevation = L.control.elevation({
+        detachedView: true,
+        elevationDiv: "#elevation-div",
+    });
+    controlElevation.addTo(karte);
+    controlElevation.addData(e.line);
+}).addTo(karte);
 
