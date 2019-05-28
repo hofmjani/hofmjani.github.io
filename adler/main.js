@@ -162,6 +162,23 @@ new L.GPX("AdlerwegEtappe05.gpx", {
     }
 }).on('loaded', function (e) {
     karte.fitBounds(e.target.getBounds());
+
+    // die unsaubere Variante mit den backticks im js ( hier muss  <!--<div id=stats></div>--> im html verlinkt werden! )
+    /*const statsDiv=document.getElementById("stats");
+    const maxHeight= e.target.get_elevation_max();
+    const minHeight=e.target.get_elevation_min();
+    const verticalMeters= Math.round(e.target.get_elevation_gain());
+    statsDiv.innerHTML= `Routen Statistik: <br> niedrigster Punkt: ${minHeight} m, höchster Punkt: ${maxHeight} m, Höhenunterschied: ${verticalMeters} m`
+*/
+
+    // saubere Variante mit dem Text und den Ankern im html doc div inkl span... 
+    const minSpan = document.getElementById("min");
+    const maxSpan = document.getElementById("max");
+    const diffSpan = document.getElementById("diff");
+    minSpan.innerHTML = e.target.get_elevation_min();
+    maxSpan.innerHTML = e.target.get_elevation_max();
+    diffSpan.innerHTML = Math.round(e.target.get_elevation_gain());
+
 }).on('addline', function (e) {
     console.log('linie geladen');
     const controlElevation = L.control.elevation({
@@ -170,37 +187,36 @@ new L.GPX("AdlerwegEtappe05.gpx", {
     });
     controlElevation.addTo(karte);
     controlElevation.addData(e.line);
-    const gpxLinie=e.line.getLatLngs();
+    const gpxLinie = e.line.getLatLngs();
     console.log(gpxLinie);
-    for (let i = 1; i < gpxLinie.length; i += 1){
+    for (let i = 1; i < gpxLinie.length; i += 1) {
         console.log(gpxLinie[i]);
-        let p1=gpxLinie[i-1];
-        let p2=gpxLinie[i];
-        let dist= karte.distance(
-            [p1.lat,p1.lng],
-            [p2.lat,p2.lng]
+        let p1 = gpxLinie[i - 1];
+        let p2 = gpxLinie[i];
+        let dist = karte.distance(
+            [p1.lat, p1.lng],
+            [p2.lat, p2.lng]
         );
-let delta=(p2.meta.ele - p1.meta.ele);
-let proz = (dist != 0 ? delta/ dist * 100.0 : 0).toFixed(1);
+        let delta = (p2.meta.ele - p1.meta.ele);
+        let proz = (dist != 0 ? delta / dist * 100.0 : 0).toFixed(1);
         //console.log('Distanz: ', dist, 'Höhendiff:', delta, 'Steigung:', proz); -> nur fürs Entwickeln wichtig
-    let farbe = 
-    proz >= 10 ? "#d73027":
-    proz >= 6 ? "#fc8d59":
-    proz >= 2 ? "#fee08b":
-    proz >= 0 ?"#ffffbf":
-    proz >= -6 ? "#d9ef8b":
-    proz >= -10 ? "#91cf60":
-    "#1a9850";
-L.polyline(
-    [
-    [p1.lat,p1.lng],
-    [p2.lat,p2.lng],
-    ],{
-        color : farbe,
-    }
-).addTo(karte);
+        let farbe =
+            proz >= 10 ? "#d73027" :
+            proz >= 6 ? "#fc8d59" :
+            proz >= 2 ? "#fee08b" :
+            proz >= 0 ? "#ffffbf" :
+            proz >= -6 ? "#d9ef8b" :
+            proz >= -10 ? "#91cf60" :
+            "#1a9850";
+        L.polyline(
+            [
+                [p1.lat, p1.lng],
+                [p2.lat, p2.lng],
+            ], {
+                color: farbe,
+            }
+        ).addTo(karte);
     }
 
 
 });
-
