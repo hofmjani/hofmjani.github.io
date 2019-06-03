@@ -111,7 +111,7 @@ karte.on("load zoomend moveend", function () {
         w: karte.getBounds().getWest(),
     }
     console.log(ausschnitt);
-    const geonamesUrl = `http://api.geonames.org/wikipediaBoundingBoxJSON?formatted=true&north=${ausschnitt.n}&south=${ausschnitt.s}&east=${ausschnitt.o}&west=${ausschnitt.w}&username=hofmjani&style=full&maxRows=5&lang=de`;
+    const geonamesUrl = `https://api.geonames.org/wikipediaBoundingBoxJSON?formatted=true&north=${ausschnitt.n}&south=${ausschnitt.s}&east=${ausschnitt.o}&west=${ausschnitt.w}&username=hofmjani&style=full&maxRows=5&lang=de`;
     console.log(geonamesUrl);
 // Sicherstellen dass man nur dann was abholt wenn sich die URL geändert hat 
     if (geonamesUrl != letzteGeonamesUrl) {
