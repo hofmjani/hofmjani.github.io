@@ -111,7 +111,7 @@ karte.on("load zoomend moveend", function () {
         w: karte.getBounds().getWest(),
     }
     console.log(ausschnitt);
-    const geonamesUrl = `http://api.geonames.org/wikipediaBoundingBoxJSON?formatted=true&north=${ausschnitt.n}&south=${ausschnitt.s}&east=${ausschnitt.o}&west=${ausschnitt.w}&username=hofmjani&style=full&maxRows=5&lang=de`;
+    const geonamesUrl = `https://secure.geonames.org/wikipediaBoundingBoxJSON?formatted=true&north=${ausschnitt.n}&south=${ausschnitt.s}&east=${ausschnitt.o}&west=${ausschnitt.w}&username=hofmjani&style=full&maxRows=50&lang=de`;
     console.log(geonamesUrl);
 // Sicherstellen dass man nur dann was abholt wenn sich die URL geändert hat 
     if (geonamesUrl != letzteGeonamesUrl) {
@@ -146,7 +146,7 @@ const url = ' https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&v
 
 function makeMarker(feature, latlng) { //Marker definieren 
     const fotoIcon = L.icon({ //Icon definieren
-        iconUrl: 'https://www.data.wien.gv.at/icons/wlanwienatogd.svg',
+        iconUrl: 'http://www.data.wien.gv.at/icons/wlanwienatogd.svg',
         iconSize: [16, 16]
     });
     const wlanMarker = L.marker(latlng, { //marker setzen und icon verwenden 
